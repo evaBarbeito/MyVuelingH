@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="es.pue.myvueling.model.business.entities.planning">
+    
+    <class name="Color" table="Colors">
+        <id name="id" type="java.lang.Long" unsaved-value="-1">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="java.lang.String" column="name" not-null="true" length="50"/>
+        <property name="red" type="java.lang.Integer" column="red" not-null="true"/>
+        <property name="green" type="java.lang.Integer" column="green" not-null="true"/>
+        <property name="blue" type="java.lang.Integer" column="blue" not-null="true"/>
+    </class>
+    
+    <class name="Event" table="Events">
+        <id name="id" type="java.lang.Long" unsaved-value="-1">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="java.lang.String" column="name" not-null="true" length="250"/>
+        <property name="date" type="java.time.LocalDate" column="date" not-null="true" />
+        <property name="startTime" type="java.time.LocalTime" column="startTime" not-null="true" />
+        <property name="endTime" type="java.time.LocalTime" column="endTime" not-null="true" />
+        <property name="place" type="java.lang.String" column="place" not-null="true" length="50"/>
+        <property name="description" type="java.lang.String" column="description" not-null="false" length="500"/>
+        <many-to-one name="backgroundColor" column="backgroundColor" class="es.pue.myvueling.model.business.entities.planning.Color" not-null="true"/>
+        <many-to-one name="textColor" column="textColor" class="es.pue.myvueling.model.business.entities.planning.Color" not-null="true"/>
+        <property name="visible" type="java.lang.Boolean" column="visible" not-null="true"/>
+        <property name="registrationDate" type="java.time.LocalDateTime" column="registrationDate" not-null="true"/>    
+    </class>
+    
+    
+</hibernate-mapping>
+
